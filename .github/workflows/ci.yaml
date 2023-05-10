@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu:20.04
     steps:
       - name: "command name goes here"
-      - run: | 
+        run: | 
             echo 'hello from gitlba runner'
