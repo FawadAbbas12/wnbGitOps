@@ -5,11 +5,15 @@ on: [push]
 jobs:
   simpeHelloWorldJob:
     runs-on: ubuntu-20.04
+
+    env:
+      TEST_SECRET: ${{ secrets.test }}
     steps:
       - uses: actions/checkout@v3
-      - name: "command name goes here"
+      - name: "preload config"
         run: | 
-          echo 'starting'
+          echo 'starting' \ &&
+          echo 'your secret: '$TEST_SECRET
       - name: "env setup"
         run: |
           pip install -r deps/req.txt
