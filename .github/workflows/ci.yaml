@@ -6,5 +6,6 @@ jobs:
   simpeHelloWorldJob:
     runs-on: ubuntu:20.04
     steps:
-      - name: command name goes here
-        RUN: | echo 'hello from gitlba runner'
+      - name: "command name goes here"
+      - run: | 
+            echo 'hello from gitlba runner'
