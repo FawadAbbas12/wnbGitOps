@@ -12,7 +12,7 @@ jobs:
           echo 'starting'
       - name: "env setup"
         run: |
-          pip install -r req.txt
+          pip install -r deps/req.txt
 
       - name: "unit test 1"
         run: |
