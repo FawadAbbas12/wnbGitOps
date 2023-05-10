@@ -1,0 +1,10 @@
+name: Basic github action test
+
+on: [push]
+
+jobs:
+  simpeHelloWorldJob:
+    runs-on: ubuntu:20.04
+    steps:
+      - name: command name goes here
+        RUN: | echo 'hello from gitlba runner'
