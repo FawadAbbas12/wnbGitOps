@@ -6,6 +6,14 @@ jobs:
   simpeHelloWorldJob:
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v3
       - name: "command name goes here"
         run: | 
-            echo 'hello from gitlba runner'
+          echo 'starting'
+      - name: "env setup"
+        run: |
+          pip install -r req.txt
+
+      - name: "unit test 1"
+        run: |
+          python test/env.test.py
