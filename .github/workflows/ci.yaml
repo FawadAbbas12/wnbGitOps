@@ -8,7 +8,7 @@ jobs:
 
     env:
       TEST_SECRET: ${{ secrets.test }}
-      EVENT: ${{github.event.pusher}}
+      EVENT: ${{github.event.pusher.name}}
     steps:
       - uses: actions/checkout@v3
       - name: "preload config"
