@@ -8,7 +8,7 @@ jobs:
     env:
       ALLOWED_PUSHERS: ${{ secrets.ALLOWED_PUSHERS}}
       BRANCH: ${{ github.ref_name}}
-      PUSHER: ${{ github.event.pusher.name}}
+      PUSHER: ${{ github.event.pull_request.user}}
     
     steps:
       - uses: actions/checkout@v3
