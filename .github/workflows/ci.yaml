@@ -8,16 +8,10 @@ jobs:
 
     env:
       TEST_SECRET: ${{ secrets.test }}
+      EVENT: ${{github.event.pusher}}
     steps:
       - uses: actions/checkout@v3
       - name: "preload config"
         run: | 
           echo 'starting' \ &&
-          echo 'your secret: '$TEST_SECRET
-      - name: "env setup"
-        run: |
-          pip install -r deps/req.txt
-
-      - name: "unit test 1"
-        run: |
-          python tests/env_test.py
+          echo 'your secret: '$EVENT
