@@ -15,6 +15,9 @@ jobs:
       - name: env setup
         run: |
           pip install -r deps/test-req.txt
+      - name: event
+        run: |
+          cat ${{github.event}}
       - name: Run Test
         run: |
           python -m pytest -k validate_pusher -v
