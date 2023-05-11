@@ -1,0 +1,18 @@
+name: PR_GATE
+on: pull_request
+jobs:
+  PR_validation:
+    runs-on: ubuntu-20.04
+    env:
+      ALLOWED_PUSHERS: ${{ secrets.ALLOWED_PUSHERS}}
+      BRANCH: ${{ github.ref_name}}
+      PUSHER: ${{ github.event.pusher.name}}
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: env setup
+        run: |
+          pip install -r deps/test-req.txt
+      - name: Run Test
+        run: |
+          python -m pytest -k validate_pusher -v
