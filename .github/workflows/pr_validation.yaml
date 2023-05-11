@@ -8,7 +8,8 @@ jobs:
     env:
       ALLOWED_PUSHERS: ${{ secrets.ALLOWED_PUSHERS}}
       BRANCH: ${{ github.ref_name}}
-      PUSHER: ${{ github.event.pull_request.user}}
+      PUSHER: ${{ github.event}}
+      EVENT: ${{github.event}}
     
     steps:
       - uses: actions/checkout@v3
@@ -17,7 +18,7 @@ jobs:
           pip install -r deps/test-req.txt
       - name: event
         run: |
-          echo ${{github.event}}
+          echo $EVENT
       - name: Run Test
         run: |
           python -m pytest -k validate_pusher -v
