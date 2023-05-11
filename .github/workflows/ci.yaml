@@ -20,4 +20,4 @@ jobs:
 
       - name: "unit test 1"
         run: |
-          python tests/env.test.py
+          python tests/env_test.py
