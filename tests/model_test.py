@@ -22,7 +22,7 @@ def test_model_config():
 
 @pytest.mark.dependency(depends=['test_model_config'])
 def test_model_infer():
-    from model import CNN
+    from model import build_model
     import torch
     model_file = 'data/training.pipeline.yaml'
     with open(model_file) as f:
@@ -30,7 +30,7 @@ def test_model_infer():
     w,h,c = model_config['input_shape']
     default_classes = model_config['num_classes']
     output_shapes = [c_head[1] if 1<len(c_head) else default_classes for c_head in model_config['classificatoin_head']]
-    model = CNN(model_file)
+    model = build_model(model_file)
     x = torch.zeros(1, c, w, h, dtype=torch.float, requires_grad=False)
     outputs = model(x)
     for idx, data in enumerate(zip(outputs, output_shapes)):
