@@ -1,0 +1,24 @@
+
+data:
+    format: csv
+    source: 
+        train : dataset/train
+        val : dataset/val
+        test : dataset/test
+
+# A very lousy cnn model config to test CICD pipeline
+model:
+    input_shape: [64,64,3]
+    output_heads: 3
+    num_classes: 5
+    backbone:
+        # [layer_type, args, name]
+        - [conv, [  3,  32, 3,3, 1, 2], c1]
+        - [conv, [ 32,  64, 3,3, 1, 2], c2]
+        - [conv, [ 64, 128, 3,3, 1, 2], c3]
+        - [conv, [128, 256, 3,3, 1, 2], c4]
+    classificatoin_head:
+        # connection_lyer, [output_shape, [activation]]   
+        - [c2]
+        - [c3, 7]
+        - [c4, 3, softmax]
